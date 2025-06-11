@@ -8,33 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestUrl("/pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
 
     @Autowired
     private IPacienteService pacienteService;
 
-    @PostMapping("/add")
-    public void addPaciente(Paciente paciente) {
+    @PostMapping
+    public void addPaciente(@RequestBody Paciente paciente) {
         pacienteService.addPaciente(paciente);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public List<Paciente> getAllPacientes() {
         return pacienteService.getAllPacientes();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deletePaciente(@PathVariable Long id) {
         pacienteService.deletePaciente(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void updatePaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
         pacienteService.updatePaciente(id, paciente);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public Paciente getPacienteById(@PathVariable Long id) {
         return pacienteService.getPacienteById(id);
     }

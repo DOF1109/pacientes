@@ -21,14 +21,7 @@ public class PacienteService implements IPacienteService{
     @Override
     public void updatePaciente(Long id, Paciente paciente) {
         Paciente existingPaciente = pacienteRepository.findById(id).orElse(null);
-        if (existingPaciente != null) {
-            existingPaciente.setDni(paciente.getDni());
-            existingPaciente.setNombre(paciente.getNombre());
-            existingPaciente.setApellido(paciente.getApellido());
-            existingPaciente.setFechaNac(paciente.getFechaNac());
-            existingPaciente.setTelefono(paciente.getTelefono());
-            pacienteRepository.save(existingPaciente);
-        }
+        if (existingPaciente != null) pacienteRepository.save(existingPaciente);
     }
 
     @Override
