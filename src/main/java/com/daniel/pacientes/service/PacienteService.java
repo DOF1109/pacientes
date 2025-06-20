@@ -14,14 +14,13 @@ public class PacienteService implements IPacienteService{
     private IPacienteRepository pacienteRepository;
 
     @Override
-    public void addPaciente(Paciente paciente) {
+    public void savePaciente(Paciente paciente) {
         pacienteRepository.save(paciente);
     }
 
     @Override
     public void updatePaciente(Long id, Paciente paciente) {
-        Paciente existingPaciente = pacienteRepository.findById(id).orElse(null);
-        if (existingPaciente != null) pacienteRepository.save(existingPaciente);
+        this.savePaciente(paciente);
     }
 
     @Override
@@ -30,12 +29,12 @@ public class PacienteService implements IPacienteService{
     }
 
     @Override
-    public Paciente getPacienteById(Long id) {
+    public Paciente findPacienteById(Long id) {
         return pacienteRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Paciente> getAllPacientes() {
+    public List<Paciente> findAllPacientes() {
         return pacienteRepository.findAll();
     }
 }

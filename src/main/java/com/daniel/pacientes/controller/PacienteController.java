@@ -15,13 +15,13 @@ public class PacienteController {
     private IPacienteService pacienteService;
 
     @PostMapping
-    public void addPaciente(@RequestBody Paciente paciente) {
-        pacienteService.addPaciente(paciente);
+    public void createPaciente(@RequestBody Paciente paciente) {
+        pacienteService.savePaciente(paciente);
     }
 
     @GetMapping("/all")
     public List<Paciente> getAllPacientes() {
-        return pacienteService.getAllPacientes();
+        return pacienteService.findAllPacientes();
     }
 
     @DeleteMapping("/{id}")
@@ -36,6 +36,6 @@ public class PacienteController {
 
     @GetMapping("/{id}")
     public Paciente getPacienteById(@PathVariable Long id) {
-        return pacienteService.getPacienteById(id);
+        return pacienteService.findPacienteById(id);
     }
 }
